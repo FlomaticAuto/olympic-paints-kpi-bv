@@ -218,23 +218,182 @@ tbody td{padding:9px 14px;vertical-align:middle;color:var(--color-text-primary)}
   </div>
   <div class="hdr-r">
     <div class="hdr-ytd">R9.47M</div>
-    <div class="hdr-meta">Week ending 1 May 2026 &middot; Generated 06 May 2026 12:43</div>
+    <div class="hdr-meta">Week ending 1 May 2026 &middot; Generated 06 May 2026 20:39</div>
   </div>
 </div>
 
 <!-- ── TAB NAV ── -->
 <div class="tab-nav">
-  <button class="tab-btn active" data-tab="sales"    onclick="showTab('sales')">Sales</button>
-  <button class="tab-btn"        data-tab="pricing"  onclick="showTab('pricing')">Pricing</button>
-  <button class="tab-btn"        data-tab="activity" onclick="showTab('activity')">Activity</button>
-  <button class="tab-btn"        data-tab="debtors"  onclick="showTab('debtors')">Debtors</button>
-  <button class="tab-btn"        data-tab="accounts" onclick="showTab('accounts')">Accounts</button>
+  <button class="tab-btn active" data-tab="overview"  onclick="showTab('overview')">Overview</button>
+  <button class="tab-btn"        data-tab="sales"     onclick="showTab('sales')">Sales</button>
+  <button class="tab-btn"        data-tab="pricing"   onclick="showTab('pricing')">Pricing</button>
+  <button class="tab-btn"        data-tab="activity"  onclick="showTab('activity')">Activity</button>
+  <button class="tab-btn"        data-tab="debtors"   onclick="showTab('debtors')">Debtors</button>
+  <button class="tab-btn"        data-tab="accounts"  onclick="showTab('accounts')">Accounts</button>
 </div>
 
 <div class="page-main">
 
+<!-- ── OVERVIEW TAB ── -->
+<div id="panel-overview" class="tab-panel active">
+  <div class="sec-h">Performance Summary &mdash; FY2026 YTD</div>
+  <div class="kpi-grid">
+    <div class="kpi">
+      <div class="kpi-label">FY2026 YTD Revenue</div>
+      <div class="kpi-value">R9.47M</div>
+      <div class="kpi-delta neu">FY2025 same period: R7.63M</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">30% Growth Target (YTD)</div>
+      <div class="kpi-value">R9.92M</div>
+      <div class="kpi-delta dn">Gap: R448.3K</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">YOY Growth &mdash; KPI A</div>
+      <div class="kpi-value up">+24.1%</div>
+      <div class="kpi-delta up"><span class="pill grn">✓ +24.1% YoY</span></div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Lines Above Rock Bottom</div>
+      <div class="kpi-value warn">74.9%</div>
+      <div class="kpi-delta neu">4,196 of 5,600 lines</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Debtors Total</div>
+      <div class="kpi-value">R5.08M</div>
+      <div class="kpi-delta warn">66 accounts</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Overdue &gt;60 Days</div>
+      <div class="kpi-value dn">20.7%</div>
+      <div class="kpi-delta dn">R1.05M at collections risk</div>
+    </div>
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="card-title">Monthly Revenue &mdash; FY2025 vs FY2026</div>
+      <div class="card-sub">Full FY2025 (Mar&ndash;Feb) alongside FY2026 to date (Mar onward)</div>
+      <div class="chart-wrap h280"><canvas id="cOvRev"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Revenue by Category &mdash; FY2026 YTD</div>
+      <div class="card-sub">Top 8 product categories by revenue</div>
+      <div class="chart-wrap h280"><canvas id="cOvCat"></canvas></div>
+    </div>
+  </div>
+
+  <div class="g2" style="margin-top:18px">
+    <div class="card">
+      <div class="card-title">Top 5 Accounts &mdash; YTD Revenue</div>
+      <div class="card-sub">Highest-revenue accounts in FY2026</div>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Account</th><th style="text-align:right">Revenue</th></tr></thead>
+          <tbody><tr><td>Brits Hardware & Glass</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R2.54M</td></tr><tr><td>HGM Steelboys CC</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R687.5K</td></tr><tr><td>Patel (Nkomazi Imp. & Exp. CC)</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R537.2K</td></tr><tr><td>Buildware ta Siam Trading</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R535.5K</td></tr><tr><td>Myka Trade 2 Mankweng</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R521.9K</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Debtors Breakdown</div>
+      <div class="card-sub">Collections position &mdash; 66 accounts</div>
+      <div style="margin-top:14px;display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--color-surface-sunken);border-radius:var(--r-md)">
+          <span style="font-size:12px;color:var(--color-text-secondary)">Current (within terms)</span>
+          <span style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--color-success-fg)">R26.0K</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--color-surface-sunken);border-radius:var(--r-md)">
+          <span style="font-size:12px;color:var(--color-text-secondary)">30 Days</span>
+          <span style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--color-warning-fg)">R4.00M</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--color-surface-sunken);border-radius:var(--r-md)">
+          <span style="font-size:12px;color:var(--color-text-secondary)">Over 60 Days</span>
+          <span style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--color-danger-fg)">R1.05M (20.7%)</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 14px;background:var(--color-surface-elevated);border-radius:var(--r-md);border:1px solid var(--color-border-default)">
+          <span style="font-size:12px;font-weight:600;color:var(--color-text-primary)">Total Outstanding</span>
+          <span style="font-family:var(--font-display);font-weight:900;font-size:20px;color:var(--color-text-primary)">R5.08M</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="g2" style="margin-top:18px">
+    <div class="card">
+      <div class="card-title">Products Most Often Below Rock Bottom</div>
+      <div class="card-sub">Top 5 by frequency of below-RB transactions in FY2026 YTD</div>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Product</th><th style="text-align:right">Avg vs RB</th></tr></thead>
+          <tbody><tr><td style="font-size:12px">5KG PUTTY</td><td style="text-align:right"><span class="pill red">-6.8%</span></td></tr><tr><td style="font-size:12px">1L DARK OAK VARNISH</td><td style="text-align:right"><span class="pill red">-10.1%</span></td></tr><tr><td style="font-size:12px">5L RAINPROOF GREY</td><td style="text-align:right"><span class="pill red">-5.4%</span></td></tr><tr><td style="font-size:12px">1L LIGHT OAK VARNISH</td><td style="text-align:right"><span class="pill red">-10.5%</span></td></tr><tr><td style="font-size:12px">5L RAINPROOF BURGUNDY</td><td style="text-align:right"><span class="pill red">-5.6%</span></td></tr></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">KPI Scorecard Status</div>
+      <div class="card-sub">Sales Rep KPI Agreement 2025 &mdash; 5 categories</div>
+      <div style="margin-top:14px;display:flex;flex-direction:column;gap:8px;font-family:var(--font-body);font-size:13px">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 14px;background:var(--color-success-bg);border:1px solid var(--color-success-bd);border-radius:var(--r-md)">
+          <span><strong>A &mdash; Sales Growth (50%)</strong></span>
+          <span class="pill grn">✓ +24.1% YoY</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 14px;background:var(--color-neutral-bg);border:1px solid var(--color-neutral-bd);border-radius:var(--r-md)">
+          <span style="color:var(--color-text-secondary)">B &mdash; CRM Dev (20%)</span>
+          <span class="pill neu">No data</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 14px;background:var(--color-neutral-bg);border:1px solid var(--color-neutral-bd);border-radius:var(--r-md)">
+          <span style="color:var(--color-text-secondary)">C &mdash; Product Dev (10%)</span>
+          <span class="pill neu">No data</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 14px;background:var(--color-neutral-bg);border:1px solid var(--color-neutral-bd);border-radius:var(--r-md)">
+          <span style="color:var(--color-text-secondary)">D &mdash; New Customers (10%)</span>
+          <span class="pill neu">No data</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 14px;background:var(--color-neutral-bg);border:1px solid var(--color-neutral-bd);border-radius:var(--r-md)">
+          <span style="color:var(--color-text-secondary)">E &mdash; Training (10%)</span>
+          <span class="pill neu">No data</span>
+        </div>
+        <p style="font-size:11px;color:var(--color-text-tertiary);margin-top:4px">Scoreable weight this period: 50% of 100%</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-h">Approved Outstanding Orders</div>
+  <div class="kpi-grid" style="grid-template-columns:repeat(3,minmax(160px,1fr))">
+    <div class="kpi">
+      <div class="kpi-label">Orders Approved</div>
+      <div class="kpi-value">35</div>
+      <div class="kpi-delta neu">Awaiting dispatch</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Total Lines</div>
+      <div class="kpi-value">705</div>
+      <div class="kpi-delta neu">Across all approved orders</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Total Value (Incl. VAT)</div>
+      <div class="kpi-value up">R3.04M</div>
+      <div class="kpi-delta up">Ready for delivery</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Approved Orders — Awaiting Dispatch</div>
+    <div class="card-sub">Orders with APPROVED status in the PAD system — data as at last script run</div>
+    <div class="tw">
+      <table>
+        <thead><tr>
+          <th>Order #</th><th>Date</th><th>Account</th>
+          <th style="text-align:right">Lines</th>
+          <th style="text-align:right">Value (Incl. VAT)</th>
+        </tr></thead>
+        <tbody><tr><td style="font-family:var(--font-display);font-weight:700">15218</td><td>04/05/2026</td><td>KB038</td><td style="text-align:right">90</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R89,241.07</td></tr><tr><td style="font-family:var(--font-display);font-weight:700">15236</td><td>04/05/2026</td><td>KK028</td><td style="text-align:right">41</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R105,405.96</td></tr><tr><td style="font-family:var(--font-display);font-weight:700">15238</td><td>04/05/2026</td><td>KS029</td><td style="text-align:right">62</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R1,078,132.92</td></tr><tr><td style="font-family:var(--font-display);font-weight:700">15241</td><td>04/05/2026</td><td>KF009</td><td style="text-align:right">16</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R24,589.42</td></tr><tr><td style="font-family:var(--font-display);font-weight:700">15248</td><td>04/05/2026</td><td>KP005</td><td style="text-align:right">17</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R130,757.60</td></tr><tr><td style="font-family:var(--font-display);font-weight:700">15249</td><td>04/05/2026</td><td>KV005</td><td style="text-align:right">14</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R9,804.94</td></tr><tr><td style="font-family:var(--font-display);font-weight:700">15252</td><td>04/05/2026</td><td>KD008</td><td style="text-align:right">22</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R38,196.81</td></tr><tr><td style="font-family:var(--font-display);font-weight:700">15253</td><td>04/05/2026</td><td>KD008</td><td style="text-align:right">36</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R149,235.44</td></tr><tr><td style="font-family:var(--font-display);font-weight:700">15255</td><td>04/05/2026</td><td>KD008</td><td style="text-align:right">19</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R14,216.62</td></tr><tr><td style="font-family:var(--font-display);font-weight:700">15261</td><td>04/05/2026</td><td>KS012</td><td style="text-align:right">17</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R19,860.90</td></tr><tr><td style="font-family:var(--font-display);font-weight:700">15265</td><td>04/05/2026</td><td>KA031</td><td style="text-align:right">10</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R31,528.51</td></tr><tr><td style="font-family:var(--font-display);font-weight:700">15267</td><td>04/05/2026</td><td>KH013</td><td style="text-align:right">8</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R21,415.28</td></tr><tr><td style="font-family:var(--font-display);font-weight:700">15270</td><td>05/05/2026</td><td>KS071</td><td style="text-align:right">54</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R92,729.14</td></tr><tr><td style="font-family:var(--font-display);font-weight:700">15271</td><td>05/05/2026</td><td>KP030</td><td style="text-align:right">18</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R33,084.43</td></tr><tr><td style="font-family:var(--font-display);font-weight:700">15272</td><td>05/05/2026</td><td>KA002</td><td style="text-align:right">14</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R9,531.47</td></tr><tr><td style="font-family:var(--font-display);font-weight:700">15274</td><td>05/05/2026</td><td>KP030</td><td style="text-align:right">1</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R8,265.63</td></tr><tr><td style="font-family:var(--font-display);font-weight:700">15278</td><td>05/05/2026</td><td>KW003</td><td style="text-align:right">23</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R20,394.76</td></tr><tr><td style="font-family:var(--font-display);font-weight:700">15283</td><td>05/05/2026</td><td>KP005</td><td style="text-align:right">4</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R2,475.66</td></tr><tr><td style="font-family:var(--font-display);font-weight:700">15288</td><td>05/05/2026</td><td>KP005</td><td style="text-align:right">28</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R174,242.16</td></tr><tr><td style="font-family:var(--font-display);font-weight:700">15289</td><td>06/05/2026</td><td>KA055</td><td style="text-align:right">3</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R6,281.96</td></tr><tr><td style="font-family:var(--font-display);font-weight:700">15297</td><td>06/05/2026</td><td>KM163</td><td style="text-align:right">7</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R9,893.51</td></tr><tr><td style="font-family:var(--font-display);font-weight:700">15300</td><td>06/05/2026</td><td>KF018</td><td style="text-align:right">16</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R38,818.03</td></tr><tr><td style="font-family:var(--font-display);font-weight:700">15301</td><td>06/05/2026</td><td>KH002</td><td style="text-align:right">3</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R10,568.60</td></tr><tr><td style="font-family:var(--font-display);font-weight:700">15083</td><td>20/04/2026</td><td>KM012</td><td style="text-align:right">17</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R92,977.85</td></tr><tr><td style="font-family:var(--font-display);font-weight:700">15105</td><td>21/04/2026</td><td>KW004</td><td style="text-align:right">38</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R214,217.69</td></tr><tr><td style="font-family:var(--font-display);font-weight:700">15107</td><td>21/04/2026</td><td>KB011</td><td style="text-align:right">23</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R457,337.12</td></tr><tr><td style="font-family:var(--font-display);font-weight:700">15115</td><td>21/04/2026</td><td>KM079</td><td style="text-align:right">7</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R13,220.33</td></tr><tr><td style="font-family:var(--font-display);font-weight:700">15138</td><td>22/04/2026</td><td>KK012</td><td style="text-align:right">21</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R16,572.75</td></tr><tr><td style="font-family:var(--font-display);font-weight:700">15141</td><td>22/04/2026</td><td>KR018</td><td style="text-align:right">22</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R37,433.33</td></tr><tr><td style="font-family:var(--font-display);font-weight:700">15145</td><td>23/04/2026</td><td>KM079</td><td style="text-align:right">2</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R3,019.30</td></tr><tr><td style="font-family:var(--font-display);font-weight:700">15164</td><td>28/04/2026</td><td>KP005</td><td style="text-align:right">1</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R7,329.87</td></tr><tr><td style="font-family:var(--font-display);font-weight:700">15168</td><td>28/04/2026</td><td>KM046</td><td style="text-align:right">6</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R6,726.38</td></tr><tr><td style="font-family:var(--font-display);font-weight:700">15188</td><td>29/04/2026</td><td>KP009</td><td style="text-align:right">31</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R34,981.89</td></tr><tr><td style="font-family:var(--font-display);font-weight:700">15191</td><td>29/04/2026</td><td>KG011</td><td style="text-align:right">8</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R15,913.70</td></tr><tr><td style="font-family:var(--font-display);font-weight:700">15217</td><td>30/04/2026</td><td>KM046</td><td style="text-align:right">6</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R18,607.51</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
 <!-- ── SALES TAB ── -->
-<div id="panel-sales" class="tab-panel active">
+<div id="panel-sales" class="tab-panel">
   <div class="sec-h">Revenue Performance &mdash; FY2026</div>
   <div class="kpi-grid">
     <div class="kpi">
@@ -404,7 +563,7 @@ tbody td{padding:9px 14px;vertical-align:middle;color:var(--color-text-primary)}
   <strong>Olympic Paints</strong> &mdash; Bhadresh Vallabh Personal KPI Dashboard &mdash; Week ending 1 May 2026<br>
   Data sourced from Amazon QuickSight Weekly Sales Reports and Zoho CRM.<br>
   KPI A scoring uses year-on-year growth vs prior-year baseline. Target: exceed 10% YOY growth for commission eligibility.<br>
-  Generated 06 May 2026 12:43 &middot; <em>Confidential &mdash; for internal use only</em>
+  Generated 06 May 2026 20:39 &middot; <em>Confidential &mdash; for internal use only</em>
 </footer>
 
 <script>
@@ -491,6 +650,42 @@ Chart.register({
         });
       });
     }catch(e){}
+  }
+});
+
+/* ── OVERVIEW REVENUE CHART ── */
+_lblMap.set('cOvRev',{mode:'v-stacked',fmt:v=>fmtR(v),fs:9,dsColors:['#fff','#0D0D0B']});
+new Chart(document.getElementById('cOvRev'),{
+  type:'bar',
+  data:{
+    labels:["Mar 25","Apr 25","May 25","Jun 25","Jul 25","Aug 25","Sep 25","Oct 25","Nov 25","Dec 25","Jan 26","Feb 26"],
+    datasets:[
+      {label:'FY2025',data:[3765312.01,3862571.5,4253019.74,4022819.12,5354681.86,4727295.14,5974009.73,7950509.83,6938273.83,7009168.02,2099112.9,3723615.08],backgroundColor:'rgba(26,61,110,0.65)',borderRadius:5},
+      {label:'FY2026',data:[5067828.36,4361203.43,38916.11,0,0,0,0,0,0,0,0,0],backgroundColor:'rgba(245,196,0,0.85)',borderRadius:5}
+    ]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    layout:{padding:{top:22}},
+    plugins:{legend:{position:'bottom',labels:{padding:16,boxWidth:12}},
+      tooltip:{callbacks:{label:c=>c.dataset.label+': '+fmtR(c.parsed.y)}}},
+    scales:{y:{grid:gridLine,ticks:{callback:v=>fmtR(v)}},x:{grid:{display:false}}}
+  }
+});
+
+/* ── OVERVIEW CATEGORY CHART ── */
+_lblMap.set('cOvCat',{mode:'h-inside',fmt:v=>'R'+v.toFixed(2)+'M',fs:9,color:'#0D0D0B'});
+new Chart(document.getElementById('cOvCat'),{
+  type:'bar',
+  data:{
+    labels:["Enamel","PVA Paints","QD Enamel","Woodcare","Accessories","Floor & Roof","Waterproofing","Primers"],
+    datasets:[{label:'Revenue (R million)',data:[3.57,1.68,1.53,1.06,0.45,0.33,0.31,0.24],backgroundColor:'#F5C400',borderRadius:5}]
+  },
+  options:{
+    indexAxis:'y',responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:c=>'R'+(c.parsed.x).toFixed(2)+'M'}}},
+    scales:{x:{grid:gridLine,ticks:{callback:v=>'R'+v.toFixed(1)+'M'}},y:{grid:{display:false},ticks:{font:{size:10}}}}
   }
 });
 
