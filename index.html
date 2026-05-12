@@ -235,13 +235,88 @@ tbody td{padding:9px 14px;vertical-align:middle;color:var(--color-text-primary)}
 .page-footer{text-align:center;padding:28px 32px;font-family:var(--font-body);
   font-size:11px;color:var(--color-text-secondary);
   border-top:1px solid var(--color-border-default);margin-top:48px;line-height:1.8}
-/* ── RESPONSIVE ──────────────────────────────────────────── */
-@media(max-width:900px){
-  .page-main{padding:18px 16px}
-  .page-hdr{padding:16px}
+/* ── RESPONSIVE ──────────────────────────────────────────────
+   Approach: desktop baseline above is left intact; the rules below
+   are mobile overrides at Tailwind-aligned breakpoints (lg 1024, md
+   768, sm 640, xs 375). All media in this block follows the same
+   principles the user requested: fluid containers, stack-on-mobile
+   flex direction, responsive text, no fixed pixel widths on
+   anything that needs to flow.
+   ─────────────────────────────────────────────────────────── */
+
+/* All media stays inside its container at every viewport */
+img,canvas,svg,video{max-width:100%;height:auto}
+/* Tables keep their horizontal-scroll fallback (.tw{overflow-x:auto}) */
+table{width:100%;table-layout:auto}
+/* Prevent body horizontal scroll from any rogue child */
+html,body{overflow-x:hidden}
+
+/* ── lg and below (≤1024px) ─────────────────────────────────── */
+@media (max-width:1024px){
+  .page-main{padding:22px 20px}
+  .page-hdr{padding:18px 20px}
   .tab-nav{padding:0 16px}
-  .g2{grid-template-columns:1fr}
-  .hdr-title{font-size:17px}
+  .g2{grid-template-columns:1fr;gap:14px}
+}
+
+/* ── md and below (≤768px) — tablet portrait & phones ───────── */
+@media (max-width:768px){
+  .page-main{padding:18px 16px}
+  .page-hdr{padding:14px 16px;flex-wrap:wrap;gap:10px}
+  /* Tab bar becomes horizontally scrollable so the rep doesn't lose tabs */
+  .tab-nav{padding:0 12px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .tab-nav::-webkit-scrollbar{display:none}
+  .tab-btn{padding:12px 14px;font-size:13px;flex-shrink:0}
+  .hdr-title{font-size:18px}
+  .hdr-sub{font-size:11px}
+  .hdr-ytd{font-size:20px}
+  .hdr-meta{font-size:10px}
+  .month-label{font-size:18px;min-width:0;flex:1;text-align:left}
+  .month-nav{gap:6px}
+  .theme-bar{padding:6px 12px;flex-wrap:wrap;justify-content:flex-start}
+  .theme-bar span{display:none}                /* "Theme:" label is dead weight on mobile */
+  .page-footer{padding:20px 16px;font-size:11px}
+  .kpi{padding:14px 16px}
+  .kpi-value{font-size:22px}
+  .card{padding:16px}
+  .card-title{font-size:14px}
+  .qbtn{flex:1 1 calc(50% - 4px);min-width:0;font-size:13px;padding:10px 8px}
+  .qnav{gap:4px}
+  .sec-h{margin:22px 0 12px;font-size:10px}
+}
+
+/* ── sm and below (≤640px) — phones in portrait ─────────────── */
+@media (max-width:640px){
+  .page-hdr{flex-direction:column;align-items:stretch}
+  .hdr-l{gap:12px}
+  .hdr-r{text-align:left}
+  .hdr-title{font-size:16px}
+  .hdr-ytd{font-size:18px}
+  .tab-btn{font-size:12px;padding:11px 12px;letter-spacing:.03em}
+  .kpi-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .kpi{padding:12px 14px}
+  .kpi-label{font-size:9px}
+  .kpi-value{font-size:20px}
+  .kpi-delta{font-size:11px}
+  .card-title{font-size:13px}
+  .card-sub{font-size:10px}
+  .month-label{font-size:16px}
+  .month-nav{margin:12px 0 16px}
+  thead th{padding:8px 10px;font-size:9px}
+  tbody td{padding:7px 10px;font-size:12px}
+  /* Heatmap cells slightly tighter on phones (still horizontally scrollable) */
+  .hm-cell{width:40px;min-width:40px;padding:6px 3px 5px}
+  .hm-count{font-size:17px}
+  .page-footer{padding:16px 12px;font-size:10px}
+}
+
+/* ── xs (≤375px) — iPhone SE / Mini baseline ────────────────── */
+@media (max-width:375px){
+  .page-main{padding:14px 12px}
+  .kpi-grid{grid-template-columns:1fr}
+  .kpi-value{font-size:22px}
+  .hdr-title{font-size:15px}
+  .qbtn{flex:1 1 100%;font-size:12px;padding:8px 6px}
 }
 
 </style>
@@ -267,8 +342,8 @@ tbody td{padding:9px 14px;vertical-align:middle;color:var(--color-text-primary)}
     </div>
   </div>
   <div class="hdr-r">
-    <div class="hdr-ytd">R10.75M</div>
-    <div class="hdr-meta">Week ending 12 May 2026 &middot; Generated 12 May 2026 09:11</div>
+    <div class="hdr-ytd">R9.47M</div>
+    <div class="hdr-meta">Week ending 12 May 2026 &middot; Generated 12 May 2026 09:25</div>
   </div>
 </div>
 
@@ -294,33 +369,33 @@ tbody td{padding:9px 14px;vertical-align:middle;color:var(--color-text-primary)}
   <div class="kpi-grid">
     <div class="kpi">
       <div class="kpi-label">FY2026 YTD Revenue</div>
-      <div class="kpi-value">R10.75M</div>
-      <div class="kpi-delta neu">FY2025 same period: R11.86M</div>
+      <div class="kpi-value">R9.47M</div>
+      <div class="kpi-delta neu">FY2025 same period: R7.63M</div>
     </div>
     <div class="kpi">
       <div class="kpi-label">30% Growth Target (YTD)</div>
-      <div class="kpi-value">R15.42M</div>
-      <div class="kpi-delta dn">Gap: R4.67M</div>
+      <div class="kpi-value">R9.92M</div>
+      <div class="kpi-delta dn">Gap: R448.3K</div>
     </div>
     <div class="kpi">
       <div class="kpi-label">YOY Growth &mdash; KPI A</div>
-      <div class="kpi-value dn">-9.4%</div>
-      <div class="kpi-delta dn"><span class="pill red">✗ -9.4% YoY</span></div>
+      <div class="kpi-value up">+24.1%</div>
+      <div class="kpi-delta up"><span class="pill grn">✓ +24.1% YoY</span></div>
     </div>
     <div class="kpi">
       <div class="kpi-label">Lines Above Rock Bottom</div>
-      <div class="kpi-value up">82.9%</div>
-      <div class="kpi-delta neu">2,896 of 3,494 lines</div>
+      <div class="kpi-value warn">74.9%</div>
+      <div class="kpi-delta neu">4,196 of 5,600 lines</div>
     </div>
     <div class="kpi">
       <div class="kpi-label">Debtors Total</div>
-      <div class="kpi-value">R5.52M</div>
-      <div class="kpi-delta warn">69 accounts</div>
+      <div class="kpi-value">R5.08M</div>
+      <div class="kpi-delta warn">66 accounts</div>
     </div>
     <div class="kpi">
       <div class="kpi-label">Overdue &gt;60 Days</div>
-      <div class="kpi-value dn">17.5%</div>
-      <div class="kpi-delta dn">R966.6K at collections risk</div>
+      <div class="kpi-value dn">20.7%</div>
+      <div class="kpi-delta dn">R1.05M at collections risk</div>
     </div>
   </div>
 
@@ -344,29 +419,29 @@ tbody td{padding:9px 14px;vertical-align:middle;color:var(--color-text-primary)}
       <div class="tw">
         <table>
           <thead><tr><th>Account</th><th style="text-align:right">Revenue</th></tr></thead>
-          <tbody><tr><td>Brits Hardware & Glass</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R2.54M</td></tr><tr><td>Patel (Nkomazi Imp. & Exp. CC)</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R836.5K</td></tr><tr><td>Buildware ta Siam Trading</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R721.8K</td></tr><tr><td>HGM Steelboys CC</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R671.7K</td></tr><tr><td>Dada's World of Hardware CC</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R508.1K</td></tr></tbody>
+          <tbody><tr><td>Brits Hardware & Glass</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R2.54M</td></tr><tr><td>HGM Steelboys CC</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R687.5K</td></tr><tr><td>Patel (Nkomazi Imp. & Exp. CC)</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R537.2K</td></tr><tr><td>Buildware ta Siam Trading</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R535.5K</td></tr><tr><td>Myka Trade 2 Mankweng</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R521.9K</td></tr></tbody>
         </table>
       </div>
     </div>
     <div class="card">
       <div class="card-title">Debtors Breakdown</div>
-      <div class="card-sub">Collections position &mdash; 69 accounts</div>
+      <div class="card-sub">Collections position &mdash; 66 accounts</div>
       <div style="margin-top:14px;display:flex;flex-direction:column;gap:10px">
         <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--color-surface-sunken);border-radius:var(--r-md)">
           <span style="font-size:12px;color:var(--color-text-secondary)">Current (within terms)</span>
-          <span style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--color-success-fg)">R1.19M</span>
+          <span style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--color-success-fg)">R26.0K</span>
         </div>
         <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--color-surface-sunken);border-radius:var(--r-md)">
           <span style="font-size:12px;color:var(--color-text-secondary)">30 Days</span>
-          <span style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--color-warning-fg)">R3.37M</span>
+          <span style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--color-warning-fg)">R4.00M</span>
         </div>
         <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:var(--color-surface-sunken);border-radius:var(--r-md)">
           <span style="font-size:12px;color:var(--color-text-secondary)">Over 60 Days</span>
-          <span style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--color-danger-fg)">R966.6K (17.5%)</span>
+          <span style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--color-danger-fg)">R1.05M (20.7%)</span>
         </div>
         <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 14px;background:var(--color-surface-elevated);border-radius:var(--r-md);border:1px solid var(--color-border-default)">
           <span style="font-size:12px;font-weight:600;color:var(--color-text-primary)">Total Outstanding</span>
-          <span style="font-family:var(--font-display);font-weight:900;font-size:20px;color:var(--color-text-primary)">R5.52M</span>
+          <span style="font-family:var(--font-display);font-weight:900;font-size:20px;color:var(--color-text-primary)">R5.08M</span>
         </div>
       </div>
     </div>
@@ -378,7 +453,7 @@ tbody td{padding:9px 14px;vertical-align:middle;color:var(--color-text-primary)}
     <div class="tw">
       <table>
         <thead><tr><th>Product</th><th style="text-align:right">Avg vs RB</th></tr></thead>
-        <tbody><tr><td style="font-size:12px">200mm x 10m Membrane</td><td style="text-align:right"><span class="pill red">-95.9%</span></td></tr><tr><td style="font-size:12px">24x500GM RED OXIDE</td><td style="text-align:right"><span class="pill red">-7.5%</span></td></tr><tr><td style="font-size:12px">24x500GM OXIDE BLACK</td><td style="text-align:right"><span class="pill red">-7.9%</span></td></tr><tr><td style="font-size:12px">5KG PUTTY</td><td style="text-align:right"><span class="pill red">-6.4%</span></td></tr><tr><td style="font-size:12px">1L LIGHT OAK VARNISH</td><td style="text-align:right"><span class="pill red">-7.0%</span></td></tr></tbody>
+        <tbody><tr><td style="font-size:12px">5KG PUTTY</td><td style="text-align:right"><span class="pill red">-6.8%</span></td></tr><tr><td style="font-size:12px">1L DARK OAK VARNISH</td><td style="text-align:right"><span class="pill red">-10.1%</span></td></tr><tr><td style="font-size:12px">5L RAINPROOF GREY</td><td style="text-align:right"><span class="pill red">-5.4%</span></td></tr><tr><td style="font-size:12px">1L LIGHT OAK VARNISH</td><td style="text-align:right"><span class="pill red">-10.5%</span></td></tr><tr><td style="font-size:12px">5L RAINPROOF BURGUNDY</td><td style="text-align:right"><span class="pill red">-5.6%</span></td></tr></tbody>
       </table>
     </div>
   </div>
@@ -546,23 +621,23 @@ tbody td{padding:9px 14px;vertical-align:middle;color:var(--color-text-primary)}
   <div class="kpi-grid">
     <div class="kpi">
       <div class="kpi-label">FY2026 YTD Revenue</div>
-      <div class="kpi-value">R10.75M</div>
-      <div class="kpi-delta neu">vs FY2025 same period: R11.86M</div>
+      <div class="kpi-value">R9.47M</div>
+      <div class="kpi-delta neu">vs FY2025 same period: R7.63M</div>
     </div>
     <div class="kpi">
       <div class="kpi-label">FY2025 Full Year</div>
-      <div class="kpi-value">R59.65M</div>
+      <div class="kpi-value">R59.68M</div>
       <div class="kpi-delta neu">FY2024: R50.19M</div>
     </div>
     <div class="kpi">
       <div class="kpi-label">YoY Growth &mdash; KPI A</div>
-      <div class="kpi-value dn">-9.4%</div>
-      <div class="kpi-delta dn"><span class="pill red">✗ -9.4% YoY</span></div>
+      <div class="kpi-value up">+24.1%</div>
+      <div class="kpi-delta up"><span class="pill grn">✓ +24.1% YoY</span></div>
     </div>
     <div class="kpi">
       <div class="kpi-label">30% Growth Target (YTD)</div>
-      <div class="kpi-value">R15.42M</div>
-      <div class="kpi-delta dn">Gap: R4.67M</div>
+      <div class="kpi-value">R9.92M</div>
+      <div class="kpi-delta dn">Gap: R448.3K</div>
     </div>
   </div>
   <div class="card">
@@ -578,22 +653,22 @@ tbody td{padding:9px 14px;vertical-align:middle;color:var(--color-text-primary)}
   <div class="kpi-grid">
     <div class="kpi">
       <div class="kpi-label">Lines Above Rock Bottom</div>
-      <div class="kpi-value up">82.9%</div>
-      <div class="kpi-delta neu">2,896 of 3,494 lines</div>
+      <div class="kpi-value warn">74.9%</div>
+      <div class="kpi-delta neu">4,196 of 5,600 lines</div>
     </div>
     <div class="kpi">
       <div class="kpi-label">Avg Price vs Rock Bottom</div>
-      <div class="kpi-value up">+inf%</div>
+      <div class="kpi-value up">+10.1%</div>
       <div class="kpi-delta neu">Average margin above RB</div>
     </div>
     <div class="kpi">
       <div class="kpi-label">Revenue Below Rock Bottom</div>
-      <div class="kpi-value dn">R3.23M</div>
+      <div class="kpi-value dn">R5.88M</div>
       <div class="kpi-delta dn">Requires pricing correction</div>
     </div>
     <div class="kpi">
       <div class="kpi-label">Invoice Lines Below RB</div>
-      <div class="kpi-value">598</div>
+      <div class="kpi-value">1,404</div>
       <div class="kpi-delta warn">Lines sold below rock bottom</div>
     </div>
   </div>
@@ -607,7 +682,7 @@ tbody td{padding:9px 14px;vertical-align:middle;color:var(--color-text-primary)}
           <th style="text-align:right">Lines Below RB</th>
           <th style="text-align:right">Avg % vs RB</th>
         </tr></thead>
-        <tbody><tr><td>200mm x 10m Membrane</td><td style="text-align:right">17</td><td style="text-align:right"><span class="pill red">-95.9%</span></td></tr><tr><td>24x500GM RED OXIDE</td><td style="text-align:right">16</td><td style="text-align:right"><span class="pill red">-7.5%</span></td></tr><tr><td>24x500GM OXIDE BLACK</td><td style="text-align:right">15</td><td style="text-align:right"><span class="pill red">-7.9%</span></td></tr><tr><td>5KG PUTTY</td><td style="text-align:right">14</td><td style="text-align:right"><span class="pill red">-6.4%</span></td></tr><tr><td>1L LIGHT OAK VARNISH</td><td style="text-align:right">13</td><td style="text-align:right"><span class="pill red">-7.0%</span></td></tr><tr><td>1L DARK OAK VARNISH</td><td style="text-align:right">13</td><td style="text-align:right"><span class="pill red">-7.0%</span></td></tr><tr><td>1L Q D BLACK ENAMEL</td><td style="text-align:right">12</td><td style="text-align:right"><span class="pill red">-3.4%</span></td></tr><tr><td>1L MAHOGONY VARNISH</td><td style="text-align:right">12</td><td style="text-align:right"><span class="pill red">-6.3%</span></td></tr><tr><td>1L COPAL VARNISH</td><td style="text-align:right">11</td><td style="text-align:right"><span class="pill red">-12.6%</span></td></tr><tr><td>5L HIGH GLOSS (MQ) BURGANDY</td><td style="text-align:right">11</td><td style="text-align:right"><span class="pill red">-7.7%</span></td></tr></tbody>
+        <tbody><tr><td>5KG PUTTY</td><td style="text-align:right">31</td><td style="text-align:right"><span class="pill red">-6.8%</span></td></tr><tr><td>1L DARK OAK VARNISH</td><td style="text-align:right">28</td><td style="text-align:right"><span class="pill red">-10.1%</span></td></tr><tr><td>5L RAINPROOF GREY</td><td style="text-align:right">27</td><td style="text-align:right"><span class="pill red">-5.4%</span></td></tr><tr><td>1L LIGHT OAK VARNISH</td><td style="text-align:right">26</td><td style="text-align:right"><span class="pill red">-10.5%</span></td></tr><tr><td>5L RAINPROOF BURGUNDY</td><td style="text-align:right">26</td><td style="text-align:right"><span class="pill red">-5.6%</span></td></tr><tr><td>24x500GM OXIDE BLACK</td><td style="text-align:right">26</td><td style="text-align:right"><span class="pill red">-8.3%</span></td></tr><tr><td>24X1KG PUTTY</td><td style="text-align:right">25</td><td style="text-align:right"><span class="pill red">-4.1%</span></td></tr><tr><td>5L RAINPROOF CHARCOAL</td><td style="text-align:right">25</td><td style="text-align:right"><span class="pill red">-5.7%</span></td></tr><tr><td>1L MAHOGONY VARNISH</td><td style="text-align:right">24</td><td style="text-align:right"><span class="pill red">-10.2%</span></td></tr><tr><td>24x500GM RED OXIDE</td><td style="text-align:right">23</td><td style="text-align:right"><span class="pill red">-7.8%</span></td></tr></tbody>
       </table>
     </div>
   </div>
@@ -619,7 +694,7 @@ tbody td{padding:9px 14px;vertical-align:middle;color:var(--color-text-primary)}
   <div class="kpi-grid">
     <div class="kpi">
       <div class="kpi-label">Store Visits (All Time)</div>
-      <div class="kpi-value">0</div>
+      <div class="kpi-value">241</div>
       <div class="kpi-delta neu">Logged check-ins in Zoho CRM</div>
     </div>
     <div class="kpi">
@@ -655,23 +730,23 @@ tbody td{padding:9px 14px;vertical-align:middle;color:var(--color-text-primary)}
   <div class="kpi-grid">
     <div class="kpi">
       <div class="kpi-label">Total Outstanding</div>
-      <div class="kpi-value">R5.52M</div>
-      <div class="kpi-delta neu">69 accounts</div>
+      <div class="kpi-value">R5.08M</div>
+      <div class="kpi-delta neu">66 accounts</div>
     </div>
     <div class="kpi">
       <div class="kpi-label">Current</div>
-      <div class="kpi-value up">R1.19M</div>
+      <div class="kpi-value up">R26.0K</div>
       <div class="kpi-delta up">Within terms</div>
     </div>
     <div class="kpi">
       <div class="kpi-label">30 Days</div>
-      <div class="kpi-value">R3.37M</div>
+      <div class="kpi-value">R4.00M</div>
       <div class="kpi-delta warn">Follow-up required</div>
     </div>
     <div class="kpi">
       <div class="kpi-label">Over 60 Days</div>
-      <div class="kpi-value dn">R966.6K</div>
-      <div class="kpi-delta dn">17.5% of book &mdash; collections risk</div>
+      <div class="kpi-value dn">R1.05M</div>
+      <div class="kpi-delta dn">20.7% of book &mdash; collections risk</div>
     </div>
   </div>
   <div class="card">
@@ -698,7 +773,7 @@ tbody td{padding:9px 14px;vertical-align:middle;color:var(--color-text-primary)}
           <thead><tr>
             <th>Account</th><th>Area</th><th style="text-align:right">Revenue</th>
           </tr></thead>
-          <tbody><tr><td>Brits Hardware & Glass</td><td style="color:var(--color-text-tertiary);font-size:11px">BV1</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R2.54M</td></tr><tr><td>Patel (Nkomazi Imp. & Exp. CC)</td><td style="color:var(--color-text-tertiary);font-size:11px">BV2</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R836.5K</td></tr><tr><td>Buildware ta Siam Trading</td><td style="color:var(--color-text-tertiary);font-size:11px">BV4</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R721.8K</td></tr><tr><td>HGM Steelboys CC</td><td style="color:var(--color-text-tertiary);font-size:11px">BV3</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R671.7K</td></tr><tr><td>Dada's World of Hardware CC</td><td style="color:var(--color-text-tertiary);font-size:11px">BV3</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R508.1K</td></tr><tr><td>Dainty's Wholesale Hardware</td><td style="color:var(--color-text-tertiary);font-size:11px">BV1</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R476.1K</td></tr><tr><td>Myka Trade 2  Mankweng</td><td style="color:var(--color-text-tertiary);font-size:11px">BV3</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R430.9K</td></tr><tr><td>Steel Hub</td><td style="color:var(--color-text-tertiary);font-size:11px">BV2</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R411.4K</td></tr><tr><td>S.E.Z. Superette</td><td style="color:var(--color-text-tertiary);font-size:11px">BV1</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R383.7K</td></tr><tr><td>Chief Steel & Hardware</td><td style="color:var(--color-text-tertiary);font-size:11px">BV4</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R299.4K</td></tr></tbody>
+          <tbody><tr><td>Brits Hardware & Glass</td><td style="color:var(--color-text-tertiary);font-size:11px">BV1</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R2.54M</td></tr><tr><td>HGM Steelboys CC</td><td style="color:var(--color-text-tertiary);font-size:11px">BV3</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R687.5K</td></tr><tr><td>Patel (Nkomazi Imp. & Exp. CC)</td><td style="color:var(--color-text-tertiary);font-size:11px">BV2</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R537.2K</td></tr><tr><td>Buildware ta Siam Trading</td><td style="color:var(--color-text-tertiary);font-size:11px">BV4</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R535.5K</td></tr><tr><td>Myka Trade 2 Mankweng</td><td style="color:var(--color-text-tertiary);font-size:11px">BV3</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R521.9K</td></tr><tr><td>Jane Furse Cash & Carry</td><td style="color:var(--color-text-tertiary);font-size:11px">BV4</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R505.4K</td></tr><tr><td>Dainty's Wholesale Hardware</td><td style="color:var(--color-text-tertiary);font-size:11px">BV1</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R484.7K</td></tr><tr><td>S.E.Z. Superette</td><td style="color:var(--color-text-tertiary);font-size:11px">BV1</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R383.7K</td></tr><tr><td>Dada's World of Hardware CC</td><td style="color:var(--color-text-tertiary);font-size:11px">BV3</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R333.0K</td></tr><tr><td>Steel Hub</td><td style="color:var(--color-text-tertiary);font-size:11px">BV2</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R317.0K</td></tr></tbody>
         </table>
       </div>
     </div>
@@ -713,7 +788,7 @@ tbody td{padding:9px 14px;vertical-align:middle;color:var(--color-text-primary)}
     <div class="tw">
       <table>
         <thead><tr><th>Category</th><th style="text-align:right">Revenue</th></tr></thead>
-        <tbody><tr><td>Enamel</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R3.86M</td></tr><tr><td>QD Enamel</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R1.92M</td></tr><tr><td>PVA Paints</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R1.81M</td></tr><tr><td>Woodcare</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R1.19M</td></tr><tr><td>Accessories</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R553.5K</td></tr><tr><td>Floor & Roof Paints</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R412.2K</td></tr><tr><td>Waterproofing</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R409.2K</td></tr><tr><td>Primers</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R271.6K</td></tr><tr><td>Putty</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R187.6K</td></tr><tr><td>General</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R97.2K</td></tr></tbody>
+        <tbody><tr><td>Enamel</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R3.57M</td></tr><tr><td>PVA Paints</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R1.68M</td></tr><tr><td>QD Enamel</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R1.53M</td></tr><tr><td>Woodcare</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R1.06M</td></tr><tr><td>Accessories</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R448.8K</td></tr><tr><td>Floor & Roof Paints</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R327.4K</td></tr><tr><td>Waterproofing</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R311.2K</td></tr><tr><td>Primers</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R236.5K</td></tr><tr><td>Putty</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R172.3K</td></tr><tr><td>General</td><td style="text-align:right;font-family:var(--font-display);font-weight:700">R84.0K</td></tr></tbody>
       </table>
     </div>
   </div>
@@ -817,7 +892,7 @@ tbody td{padding:9px 14px;vertical-align:middle;color:var(--color-text-primary)}
   <strong>Olympic Paints</strong> &mdash; Bhadresh Vallabh Personal KPI Dashboard &mdash; Week ending 12 May 2026<br>
   Data sourced from Amazon QuickSight Weekly Sales Reports and Zoho CRM.<br>
   KPI A scoring uses year-on-year growth vs prior-year baseline. Target: exceed 10% YOY growth for commission eligibility.<br>
-  Generated 12 May 2026 09:11 &middot; <em>Confidential &mdash; for internal use only</em>
+  Generated 12 May 2026 09:25 &middot; <em>Confidential &mdash; for internal use only</em>
 </footer>
 
 <script>
@@ -914,8 +989,8 @@ new Chart(document.getElementById('cOvRev'),{
   data:{
     labels:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
     datasets:[
-      {label:'2025',data:[2485102.96,2228934.76,3758159.07,3846510.75,4255414.0,4014010.16,5352416.64,4720348.7,5960985.41,7967336.59,6980254.69,6968109.78],backgroundColor:'rgba(26,61,110,0.65)',borderRadius:5},
-      {label:'2026',data:[2106473.84,3718423.6,5064650.5,4344725.1,1336124.29,0.0,0.0,0.0,0.0,0.0,0.0,0.0],backgroundColor:'rgba(245,196,0,0.85)',borderRadius:5}
+      {label:'2025',data:[3765312.01,3862571.5,4253019.74,4022819.12,5354681.86,4727295.14,5974009.73,7950509.83,6938273.83,7009168.02,2099112.9,3723615.08],backgroundColor:'rgba(26,61,110,0.65)',borderRadius:5},
+      {label:'2026',data:[5067828.36,4361203.43,38916.11,0,0,0,0,0,0,0,0,0],backgroundColor:'rgba(245,196,0,0.85)',borderRadius:5}
     ]
   },
   options:{
@@ -932,8 +1007,8 @@ _lblMap.set('cOvCat',{mode:'h-inside',fmt:v=>'R'+v.toFixed(2)+'M',fs:9,color:'#0
 new Chart(document.getElementById('cOvCat'),{
   type:'bar',
   data:{
-    labels:["Enamel","QD Enamel","PVA Paints","Woodcare","Accessories","Floor & Roof Paints","Waterproofing","Primers"],
-    datasets:[{label:'Revenue (R million)',data:[3.86,1.92,1.81,1.19,0.55,0.41,0.41,0.27],backgroundColor:'#F5C400',borderRadius:5}]
+    labels:["Enamel","PVA Paints","QD Enamel","Woodcare","Accessories","Floor & Roof","Waterproofing","Primers"],
+    datasets:[{label:'Revenue (R million)',data:[3.57,1.68,1.53,1.06,0.45,0.33,0.31,0.24],backgroundColor:'#F5C400',borderRadius:5}]
   },
   options:{
     indexAxis:'y',responsive:true,maintainAspectRatio:false,
@@ -950,8 +1025,8 @@ new Chart(document.getElementById('cSalesRev'),{
   data:{
     labels:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
     datasets:[
-      {label:'2025',data:[2485102.96,2228934.76,3758159.07,3846510.75,4255414.0,4014010.16,5352416.64,4720348.7,5960985.41,7967336.59,6980254.69,6968109.78],backgroundColor:'rgba(26,61,110,0.65)',borderRadius:5},
-      {label:'2026',data:[2106473.84,3718423.6,5064650.5,4344725.1,1336124.29,0.0,0.0,0.0,0.0,0.0,0.0,0.0],backgroundColor:'rgba(245,196,0,0.85)',borderRadius:5}
+      {label:'2025',data:[3765312.01,3862571.5,4253019.74,4022819.12,5354681.86,4727295.14,5974009.73,7950509.83,6938273.83,7009168.02,2099112.9,3723615.08],backgroundColor:'rgba(26,61,110,0.65)',borderRadius:5},
+      {label:'2026',data:[5067828.36,4361203.43,38916.11,0,0,0,0,0,0,0,0,0],backgroundColor:'rgba(245,196,0,0.85)',borderRadius:5}
     ]
   },
   options:{
@@ -1073,8 +1148,8 @@ _lblMap.set('cAccCat',{mode:'h-inside',fmt:v=>'R'+v.toFixed(2)+'M',fs:9,color:'#
 new Chart(document.getElementById('cAccCat'),{
   type:'bar',
   data:{
-    labels:["Enamel","QD Enamel","PVA Paints","Woodcare","Accessories","Floor & Roof Paints","Waterproofing","Primers"],
-    datasets:[{label:'Revenue (R million)',data:[3.86,1.92,1.81,1.19,0.55,0.41,0.41,0.27],backgroundColor:'#F5C400',borderRadius:5}]
+    labels:["Enamel","PVA Paints","QD Enamel","Woodcare","Accessories","Floor & Roof","Waterproofing","Primers"],
+    datasets:[{label:'Revenue (R million)',data:[3.57,1.68,1.53,1.06,0.45,0.33,0.31,0.24],backgroundColor:'#F5C400',borderRadius:5}]
   },
   options:{
     indexAxis:'y',responsive:true,maintainAspectRatio:false,
