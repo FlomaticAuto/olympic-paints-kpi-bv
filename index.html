@@ -268,7 +268,7 @@ tbody td{padding:9px 14px;vertical-align:middle;color:var(--color-text-primary)}
   </div>
   <div class="hdr-r">
     <div class="hdr-ytd">R10.75M</div>
-    <div class="hdr-meta">Week ending 12 May 2026 &middot; Generated 12 May 2026 08:40</div>
+    <div class="hdr-meta">Week ending 12 May 2026 &middot; Generated 12 May 2026 09:11</div>
   </div>
 </div>
 
@@ -817,7 +817,7 @@ tbody td{padding:9px 14px;vertical-align:middle;color:var(--color-text-primary)}
   <strong>Olympic Paints</strong> &mdash; Bhadresh Vallabh Personal KPI Dashboard &mdash; Week ending 12 May 2026<br>
   Data sourced from Amazon QuickSight Weekly Sales Reports and Zoho CRM.<br>
   KPI A scoring uses year-on-year growth vs prior-year baseline. Target: exceed 10% YOY growth for commission eligibility.<br>
-  Generated 12 May 2026 08:40 &middot; <em>Confidential &mdash; for internal use only</em>
+  Generated 12 May 2026 09:11 &middot; <em>Confidential &mdash; for internal use only</em>
 </footer>
 
 <script>
@@ -965,7 +965,7 @@ new Chart(document.getElementById('cSalesRev'),{
 
 /* ── DAILY HEATMAP ── */
 (function(){
-  const DV={"2026-05-07": 5, "2026-05-05": 5, "2026-05-04": 7, "2026-04-23": 5, "2026-04-22": 6, "2026-04-21": 5, "2026-04-20": 8, "2026-04-15": 5, "2026-04-14": 6, "2026-04-16": 2, "2026-03-26": 6, "2026-03-25": 7, "2026-03-24": 7, "2026-03-23": 8, "2026-03-19": 6, "2026-03-18": 6, "2026-03-17": 7, "2026-03-16": 6, "2026-03-11": 5, "2026-03-05": 5, "2026-03-04": 5, "2026-03-03": 6, "2026-03-02": 9, "2026-02-26": 3, "2026-02-25": 8, "2026-02-24": 9, "2026-02-23": 9, "2026-02-19": 6, "2026-02-18": 6, "2026-02-17": 8, "2026-02-16": 6, "2026-02-06": 1, "2026-02-05": 5, "2026-02-03": 6, "2026-02-04": 5, "2026-02-02": 9, "2026-01-28": 9, "2026-01-26": 9, "2026-01-27": 7, "2026-01-29": 6, "2026-01-22": 6, "2026-01-21": 3, "2026-01-20": 8, "2026-01-19": 6, "2026-01-12": 5, "2026-01-08": 3, "2026-01-07": 6, "2026-01-06": 9};
+  const DV={"2026-05-11": 3, "2026-05-07": 5, "2026-05-05": 5, "2026-05-04": 7, "2026-04-23": 5, "2026-04-22": 6, "2026-04-21": 5, "2026-04-20": 8, "2026-04-15": 5, "2026-04-14": 6, "2026-04-16": 2, "2026-03-26": 6, "2026-03-25": 7, "2026-03-24": 7, "2026-03-23": 8, "2026-03-19": 6, "2026-03-18": 6, "2026-03-17": 7, "2026-03-16": 6, "2026-03-11": 5, "2026-03-05": 5, "2026-03-04": 5, "2026-03-03": 6, "2026-03-02": 9, "2026-02-26": 3, "2026-02-25": 8, "2026-02-24": 9, "2026-02-23": 9, "2026-02-19": 6, "2026-02-18": 6, "2026-02-17": 8, "2026-02-16": 6, "2026-02-06": 1, "2026-02-05": 5, "2026-02-03": 6, "2026-02-04": 5, "2026-02-02": 9, "2026-01-28": 9, "2026-01-26": 9, "2026-01-27": 7, "2026-01-29": 6, "2026-01-22": 6, "2026-01-21": 3, "2026-01-20": 8, "2026-01-19": 6, "2026-01-12": 5, "2026-01-08": 3, "2026-01-07": 6, "2026-01-06": 9, "2025-12-04": 4, "2025-12-03": 5, "2025-12-02": 4, "2025-12-01": 9, "2025-11-27": 5};
   const DNAMES=['','Mon','Tue','Wed','Thu','Fri'];
   const MNF=["January","February","March","April","May","June","July","August","September","October","November","December"];
   const dvMonths=[...new Set(Object.keys(DV).map(function(d){return d.slice(0,7);})  )].sort();
@@ -1051,10 +1051,10 @@ _lblMap.set('cActivity',{mode:'v',fmt:v=>String(Math.round(v)),fs:9,color:'#fff'
 new Chart(document.getElementById('cActivity'),{
   type:'bar',
   data:{
-    labels:["Jan 2026","Feb 2026","Mar 2026","Apr 2026","May 2026"],
+    labels:["Dec 2025","Jan 2026","Feb 2026","Mar 2026","Apr 2026","May 2026"],
     datasets:[
-      {label:'Store Visits',data:[0,0,0,0,0],backgroundColor:'#2D8C7A',borderRadius:4},
-      {label:'Meetings',    data:[77,81,83,37,17],backgroundColor:'#F5C400',borderRadius:4}
+      {label:'Store Visits',data:[0,0,0,0,0,0],backgroundColor:'#2D8C7A',borderRadius:4},
+      {label:'Meetings',    data:[22,77,81,83,37,20],backgroundColor:'#F5C400',borderRadius:4}
     ]
   },
   options:{
